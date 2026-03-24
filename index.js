@@ -801,3 +801,15 @@ client.on('interactionCreate', async interaction => {
   await registerCommands();
   await client.login(TOKEN);
 })();
+
+// ---------- EXPRESS KEEP-ALIVE SERVER ----------
+const express = require("express");
+const app = express();
+
+app.get("/", (req, res) => res.send("Solara Development Bot is running."));
+app.listen(process.env.PORT || 3000, () => {
+  console.log("Keep-alive server running.");
+});
+
+// ---------- START BOT ----------
+client.login(TOKEN);
